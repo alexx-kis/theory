@@ -1,0 +1,35 @@
+@import "reset.scss";
+
+.wrapper {
+	min-height: 100%;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #ffdab8;
+}
+
+
+
+.container {
+	background: #000;
+	width: 820px;
+	height: 180px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.item {
+	background: #ff69b4;
+	transition: background-color .2s;
+	width: 140px;
+	height: 140px;
+	border-radius: 10px;
+}
+
+.container:has(.item:hover)>.item:not(:hover) {
+	background-color: #ffc3e1;
+}
