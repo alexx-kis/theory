@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>
+		Animation onscroll/onload
+	</title>
+	<meta http-equiv="Content-type" content='text/html;charset=UTF-8' />
+	<link rel="stylesheet" href="css/animation-onscroll-and-onload.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<main class="main">
+			<div class="container">
+				<div class="main__heading">
+					Animation onscroll/onload
+				</div>
+				<div class="main__title js">
+					JS:
+				</div>
+				<div class="main__subtitle">
+					Animation onscroll
+				</div>
+				<!-- <div class="main__copy-button" id="button-1" onclick="myFunction()">
+					COPY CODE
+				</div> -->
+				<pre class="code js" id="code-1">
+let animItems = document.querySelectorAll('.anim-item');
+
+if (animItems.length > 0) {
+	window.addEventListener('scroll', animOnScroll);
+	function animOnScroll() {
+		for (let i = 0; i < animItems.length; i++) { 
+			let animItem=animItems[i]; 
+			let animItemHeight=animItem.offsetHeight; 
+			let animItemOffset=offset(animItem).top; 
+			let animStart=4; 
+			let animItemPoint=window.innerHeight - (animItemHeight / animStart); 
+			if (animItemHeight> window.innerHeight) {
+				animItemPoint = window.innerHeight - (window.innerHeight / animStart);
+			}
+
+			if ((pageYOffset > animItemOffset - animItemPoint) && (pageYOffset < (animItemOffset + animItemHeight))) {
+				animItem.classList.add('anim-item--active'); 
+			} else { 
+			if (!animItem.classList.contains('anim-no-hide')) {
+				animItem.classList.remove('anim-item--active'); 
+				} 
+			} 
+			function offset(elem) { 
+				let rect=elem.getBoundingClientRect(), scrollLeft=window.pageXOffset || document.documentElement.scrollLeft,
+				scrollTop=window.pageYOffset || document.documentElement.scrollTop; 
+				return { 
+					top: rect.top + scrollTop, left: rect.left + scrollLeft 
+				} 
+			} 
+		} 
+	} 
+}
+</pre>
+				<div class="main__subtitle">
+					Animation onload
+				</div>
+				<!-- <div class="main__copy-button" id="button-2">
+					COPY CODE
+				</div> -->
+				<pre class="code js" id="code-2">
+window.onload = function () {
+	let loadings = document.querySelectorAll('.loading');
+						
+	for (let loading of loadings) {
+		loading.classList.add('loaded');
+	}
+};
+				</pre>
+
+
+
+				<div class="main__title html">
+					HTML:
+				</div>
+				<p class="main__text">
+					Каждому анимируемому блоку добавить классы <span class="html">.anim-item</span> и <span
+						class="html">.anim-no-hide</span> или <span class="html">.loading</span>
+				</p>
+				<div class="main__title css">
+					CSS:
+				</div>
+				<p class="main__text">
+					Каждому анимируемому блоку задать стили, при которых эти блоки не видно:
+				</p>
+				<p class="main__text css">
+					transform: translate(-100px, 0);
+					<br>
+					transform: translate(0, 100px);
+					<br>
+					transform: scale(0);
+					<br>
+					opacity: 0;
+				</p>
+				<p class="main__text">
+					Задать "возвращающие" стили для анимируемых блоков:
+				</p>
+				<pre class="main__code css">
+.anim-item--active, .loaded {
+	opacity: 1;
+	transform: translate(0, 0);
+	transform: scale(1);
+}
+				</pre>
+			</div>
+		</main>
+
+	</div>
+	<input type="text" value="Hello World" id="myInput">
+	<button onclick="myFunction()">Copy text</button>
+	<script src="js/script.js"></script>
+</body>
+
+
+</html>
