@@ -398,7 +398,7 @@
 				</div>
 			</section>
 
-			<section class="section branches">
+			<section class="section navigation">
 				<div class="container">
 					<h2 class="heading">
 						Навигация по версиям проекта
@@ -446,9 +446,252 @@
 							<p class="text bullet">
 								Если после этого вызвать команду git status, то в сообщении будет написано, что
 								указатель HEAD находится на коммите
-								c1e2537:
+								<code class="code">c1e2537</code>:
 							</p>
+							<code class="code text">
+								HEAD detached at c1e2537
+								nothing to commit, working tree clean
+							</code>
 						</div>
+						<p class="text bullet">
+							Когда указатель <span style="color: red;">HEAD</span> был на последнем коммите, он на
+							самом деле был не на нём, а на ветке
+							<span style="color: #6c8eff;">main</span>, которая указывала на
+							последний коммит:
+						</p>
+						<p class="text bullet">
+							Указатель веток всегда показывает на последний коммит, сделанный в этой ветке
+						</p>
+						<p class="text bullet">В момент перемещения на последний коммит работа идёт непосредственно с
+							самим коммитом, поэтому указываются первые символы его hash кода
+						</p>
+						<p class="text bullet">
+							Если сделать коммит от первого коммита, а потом переместиться на ветку main, то потом будет
+							невозможно переместиться
+							на этот сделанный коммит
+						</p>
+						<div class="content">
+							<p class="text bullet">
+								Чтобы переместиться на последний коммит, нужно использовать либо код последнего коммита,
+								либо
+								название ветки:
+							</p>
+							<code class="code text">
+								git checkout main
+							</code>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section class="section branches">
+				<div class="container">
+					<h2 class="heading">
+						Работа с ветками
+					</h2>
+					<div class="section__inner">
+						<p class="text bullet">
+							Работа с разными ветками предполагает внесение изменений в проект разными людьми или
+							группами людей при этом основная
+							ветка будет сохраняться
+						</p>
+						<div class="content">
+							<p class="text bullet">
+								Команда <code class="code">git branch</code> показывает, сколько на данный момент
+								существует веток на проекте
+							</p>
+							<code class="code text">
+								MacBook-Pro:_empty_project Alex$ git branch <br>
+								* main
+							</code>
+						</div>
+						<div class="content">
+							<p class="text bullet">
+								Чтобы создать ветку нужно использовать ту же команду <code
+									class="code">git branch + название ветки</code>
+							</p>
+							<code class="code text">
+								MacBook-Pro:_empty_project Alex$ git branch branch1 <br>
+								* main
+							</code>
+						</div>
+						<div class="content">
+							<p class="text bullet">
+								Чтобы перейти на другую ветку используется команда <code
+									class="code">git checkout + название ветки</code>:
+							</p>
+							<code class="code text">
+								MacBook-Pro:_empty_project Alex$ git checkout branch1 <br>
+								Switched to branch 'branch1'
+							</code>
+						</div>
+						<p class="text bullt">
+							Чтобы переименовать ветку, <u>нужно находится на этой ветке</u>, используется команда <code
+								class="code">git branch -m + {новое имя}</code>
+						</p>
+						<p class="text bullet">
+							Чтобы удалить ветку, <u>нельзя находиться на ней</u>, нужно находиться на другой ветке <code
+								class="code">
+								git branch -d + {название удаляемой
+								ветки}
+							</code>
+						</p>
+						<p class="text bullet bullet_square">
+							<u>Вернуться на какой-то из предыдущих коммитов и продолжить разработку там можно двумя
+								способами:</u>
+						</p>
+						<ol class="list">
+							<li class="list__item">
+								<p class="text">
+									Способ
+								</p>
+								<div class="content">
+									<p class="text bullet">
+										Вернуться на этот коммит:
+									</p>
+									<code class="code">
+										git checkout c1e2537
+									</code>
+								</div>
+								<div class="content">
+									<p class="text bullet">
+										Создать там ветку:
+									</p>
+									<code class="code">
+										git branch new-branch
+									</code>
+								</div>
+								<div class="content">
+									<p class="text bullet">
+										Команда git log покажет только этот первый коммит, на котором мы находимся:
+									</p>
+									<code class="code">
+										MacBook-Pro:_empty_project Alex$ git log <br>
+										commit c1e2537f4148f89382be43eb924377e794653bb9 (HEAD, new-branch) <br>
+										Author: alex__kis &lt;fenaethylaamiinloever@gmail.com&gt; <br>
+											Date: Thu May 18 19:30:08 2023 +0300 <br>
+											First commit
+									</code>
+								</div>
+								<p class="text bullet">
+									Указатели HEAD и new-branch оба находятся на этом коммите (HEAD, new-branch)
+								</p>
+								<div class="content">
+									<p class="text bullet">
+										Нужно переместить указатель HEAD на указатель ветки new-branch:
+									</p>
+									<code class="code">
+										git checkout new-branch
+									</code>
+								</div>
+								<div class="content">
+									<p class="text bullet">
+										Теперь указатель HEAD находится на ветке new-branch
+									</p>
+									<code class="code">
+										(HEAD -> new-branch): <br>
+										
+										MacBook-Pro:_empty_project Alex$ git log <br>
+										commit c1e2537f4148f89382be43eb924377e794653bb9 (HEAD -> new-branch) <br>
+										Author: alex__kis &lt;fenaethylaamiinloever@gmail.com&gt; <br>
+											Date: Thu May 18 19:30:08 2023 +0300 <br>
+											First commit
+									</code>
+								</div>
+								<div class="content">
+									<p class="text bullet">
+										Теперь на этой ветке можно создать какой-то коммит (создадим файл style.css)
+									</p>
+									<code class="code">
+										git commit -m 'added style.css' <br>
+										<br>
+										MacBook-Pro:_empty_project Alex$ git log <br>
+										commit 61b8ccad6503460d21902b4792ce8d91715f1005 (HEAD -> new-branch) <br>
+										Author: alex__kis &lt;fenaethylaamiinloever@gmail.com&gt; <br>
+											Date: Sat May 20 13:34:14 2023 +0300 <br>
+											added style.css <br>
+										 <br>
+											commit c1e2537f4148f89382be43eb924377e794653bb9 <br>
+											Author: alex__kis &lt;fenaethylaamiinloever@gmail.com&gt; <br>
+												Date: Thu May 18 19:30:08 2023 +0300 <br>
+												First commit <br>
+
+									</code>
+								</div>
+								<div class="content">
+									<p class="text bullet">
+										Теперь указатель HEAD находится на новом, последнем коммите:
+									</p>
+									<code class="code text">
+										commit 61b8ccad6503460d21902b4792ce8d91715f1005 (HEAD -> new-branch)
+									</code>
+								</div>
+
+							</li>
+							<li class="list__item">
+								<p class="text">
+									способ
+								</p>
+								<p class="text bullet">
+									При переходе обратно на ветку main созданный коммит 61b8cc будет не видно при
+									вызове команды git log
+								</p>
+								<div class="content">
+									<p class="text bullet">
+										Перейдём на второй коммит 8f5633, создадим там ветку second-branch и перейдём на
+										неё:
+									</p>
+									<code class="code text">
+										git checkout -b second-branch 8f5633 <br>
+										<br>
+										MacBook-Pro:_empty_project Alex$ git log <br>
+										commit 8f5633744dea342c25e2ca04baf805623e9afe9b (HEAD -> second-branch) <br>
+										Author: alex__kis &lt;fenaethylaamiinloever@gmail.com&gt; <br>
+											Date: Thu May 18 19:57:11 2023 +0300 <br>
+											added js and css <br>
+										<br>
+											commit c1e2537f4148f89382be43eb924377e794653bb9 <br>
+											Author: alex__kis &lt;fenaethylaamiinloever@gmail.com&gt; <br>
+												Date: Thu May 18 19:30:08 2023 +0300 <br>
+												First commit <br>
+									</code>
+								</div>
+								<p class="text bullet">
+									Пусть есть такая ситуация, что на основной ветке <span
+										style="color: #00abff;">main</span> ведётся основная разработка,
+									затем на одном из коммитов
+									создаётся новая ветка <span style="color: #00abff;">new</span>, на которой ведётся
+									разработка какой-то фичи:
+								</p>
+								<p class="text bullet">
+									В момент, когда становится понятно, что новая фича готова и её можно добавлять на основной сайт, чтобы её видели все
+									пользователи, нужно перенести изменения на ветке <span style="color: #00abff;">new</span> на ветку <span style="color: #00abff;">main</span>
+								</p>
+								<div class="content">
+									<p class="text bullet">
+										Для слияния двух веток нужно находиться на главной ветке и использовать команду:
+									</p>
+									<code class="code text">
+										git merge + {название доп. ветки}
+									</code>
+								</div>
+								<div class="content">
+									<p class="text bullet">
+										Чтобы задать названия для коммита-слияния
+									</p>
+									<code class="code text">
+										git merge -m 'название' new
+									</code>
+								</div>
+								<p class="text bullet">
+									В результате создастся новый коммит слияния веток:
+								</p>
+								<p class="text bullet">
+									Теперь можно удалить ветку <span style="color: #00abff;">new</span>
+								</p>
+							</li>
+						</ol>
 					</div>
 				</div>
 			</section>
