@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>
+		Theory
+	</title>
+	<meta http-equiv="Content-type" content='text/html;charset=UTF-8' />
+	<link rel="stylesheet" href="css/git.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<main class="main">
+
+			<section class="section about">
+				<div class="container">
+					<h1 class="heading heading_main">
+						Работа с git и github
+					</h1>
+					<div class="content">
+						<p class="text bullet">
+							<span class="bold">git</span> - система контроля версий. Используя данную технологию в своих
+							проектах, можно сохранять
+							любую версию проекта,
+							также можно перемещаться в любое время между версиями
+						</p>
+						<p class="text bullet">
+							<span class="bold">github</span> - сервер для хостинга git-репозиториев
+						</p>
+					</div>
+					<p class="text bullet bullet_square">
+						Преимущества:
+					</p>
+					<ol class="list">
+						<li class="list__item">
+							Возможность сохранять апдейты
+						</li>
+						<li class="list__item">
+							Быстрый переход между версиями
+						</li>
+						<li class="list__item">
+							Возможность откатиться к любой из этих версий
+						</li>
+						<li class="list__item">
+							Работа в команде
+						</li>
+						<li class="list__item">
+							Параллельная разработка - одновременно несколько разработчиков могут работать над одним
+							проектом
+						</li>
+					</ol>
+				</div>
+			</section>
+
+			<section class="section setup">
+				<div class="container">
+					<h2 class="heading">
+						Установка и первичная настройка
+					</h2>
+					<p class="text bullet">
+						Сайт <a href="https://git-scm.com" class="link">git-scm.com</a>
+					</p>
+					<div class="content">
+						<p class="text bullet">
+							В терминал вставить строку:
+						</p>
+						<code class="code text">
+							/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Затем
+						</p>
+						<code class="code text">
+							brew install git
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Чтобы удалить:
+						</p>
+						<code class="code text">
+							/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Установить/изменить имя:
+						</p>
+						<code class="code text">
+							git config --global user.name <span class="comment">{через пробел ввести имя одним словом, если имя из нескольких слов, то в кавычках}</span>
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Проверить имя:
+						</p>
+						<code class="code text">
+							git config --global user.name
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Установить/изменить e-mail пользователя:
+						</p>
+						<code class="code text">
+							git config --global user.email <span class="comment">{через пробел ввести email}</span>
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Проверить email:
+						</p>
+						<code class="code text">
+							git config --global user.email
+						</code>
+					</div>
+				</div>
+			</section>
+
+			<section class=" section reps">
+				<div class="container">
+					<h2 class="heading">
+						Создание git-репозитория для проекта
+					</h2>
+					<p class="text bullet">
+						Можно использовать внешний терминал или встроенный терминал VSCode
+					</p>
+					<p class="text bullet">
+						Зайти в VSCode, потянуть вверх статус-бар, там появится терминал (или вкладка
+						Terminal → New terminal)
+					</p>
+					<p class="text bullet">
+						Нажать "+" справа, выпадающее меню, выбрать bash
+					</p>
+					<p class="text bullet">
+						Нужно установить дефолтный терминал VSCode:
+						⌘ ⇧ P → Terminal: Select Default Profile, выбрать bash
+					</p>
+					<p class="text bullet">
+						Для создания нового репозитория его нужно инициализировать
+					</p>
+					<div class="content">
+						<p class="text bullet">
+							Вставить строку:
+						</p>
+						<code class="code text">
+							git init
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Выведется сообщение о том, что создался пустой git-репозиторий и путь к этому репозиторию:
+						</p>
+						<code class="code text">
+							MacBook-Pro:_empty_project Alex$ git init <br>
+							hint: Using 'master' as the name for the initial branch. This default branch name <br>
+							hint: is subject to change. To configure the initial branch name to use in all <br>
+							hint: of your new repositories, which will suppress this warning, call: <br>
+							hint: <br>
+							hint: git config --global init.defaultBranch &lt;name&gt; <br>
+							hint: <br>
+							hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and <br>
+							hint: 'development'. The just-created branch can be renamed via this command: <br>
+							hint: <br>
+							hint: git branch -m &lt;name&gt; <br>
+							Initialized empty Git repository in /Users/Alex/Documents/FrontEnd/git/_empty_project/.git/
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Главную ветку для вновь созданных проектов нужно переименовать на <code
+								class="code">main</code>:
+						</p>
+						<code class="code text">
+							git config --global init.defaultBranch main
+						</code>
+					</div>
+					<div class="content">
+						<p class="text bullet">
+							Текущую ветку переименовать на main:
+						</p>
+						<code class="code text">
+							git branch -m main
+						</code>
+					</div>
+					<p class="text bullet">
+						Репозиторий хранится в невидимой папке .git (показать/скрыть невидимые элементы {⌘ ⇧ .})
+					</p>
+					<p class="text bullet">
+						Команда <code class="code">git status</code> показывает, что вообще на данный момент происходит
+						в git репозитории
+					</p>
+				</div>
+
+			</section>
+
+			<section class=" section work-with-rep">
+				<div class="container">
+					<h2 class="heading">
+						Работа с репозиторием
+					</h2>
+					<p class="text bullet">
+						git использует для работы три области для того, чтобы сохранять разные версии наших файлов
+					</p>
+					<div class="image">
+						<img src="./img/git/git-operations.png" alt="">
+					</div>
+
+					<p class="text">
+						<span class="bold">working directory</span> - рабочая директория/рабочий каталог - эта область,
+						которую мы видим в левой
+						боковой панели VSCode, то
+						есть это все файлы корневой папки проекта (либо в проводнике)
+					</p>
+					<p class="text">
+						<span class="bold">staging area</span> - сюда попадают все файлы, которые мы только как бы
+						подготавливаем к тому, чтобы сохранить в
+						git-репозитории
+					</p>
+					<p class="text">
+						<span class="bold">git repository</span> - сюда отправляются все подготовленные файлы
+					</p>
+
+					<p class="text bullet">
+						В working directory файлы попадают при их создании в проводнике или в левой боковой панели
+						VSCode
+					</p>
+					<p class="text bullet">
+						Чтобы отправить файл в staging area нужна команда <code
+							class="code">git add {название файла}</code>
+					</p>
+					<p class="text bullet">
+						Например, создан файл index.html → в терминале ввести <code
+							class="code">git add index.html</code>
+					</p>
+					<p class="text bullet">
+						Чтобы подготовить все файлы, вместо имён файлов можно просто поставить точку → <code
+							class="code">git add .</code>
+					</p>
+					<p class="text bullet">
+						После запуска этой команды фалы будут находится в <span class="bold">staging area</span>
+					</p>
+					<p class="text bullet">
+						Чтобы сохранить текущую версию проекта, нужна команда <code class="code">git commit</code>
+					</p>
+					<p class="text bullet">
+						commit содержит в себе информацию о версии проекта
+					</p>
+					<p class="text bullet">
+						Каждый commit создаёт новую версию проекта
+					</p>
+					<p class="text bullet">
+						Чтобы перемещаться между commit'ами, им нужно задавать названия, названия должны быть короткими,
+						но информативными
+					</p>
+					<div class="content">
+						<p class="text bullet">
+							Чтобы указать название коммита, нужно написать <code
+								class="code">git commit -m '{название}'</code>
+						</p>
+						<code class="code text">
+							[main (root-commit) c1e2537] First commit <br>
+							1 file changed, 15 insertions(+) <br>
+							create mode 100644 index.html
+						</code>
+					</div>
+					<p class="text">
+						<code class="code">main</code> - название ветки, в которой был совершён коммит
+					</p>
+					<p class="text"><code class="code">root-commit</code> - корневой коммит</p>
+					<p class="text"><code class="code">c1e2537</code> - кусочек hash кода, который принадлежит этому коммиту</p>
+					<p class="text"><code class="code">First commit</code> - название коммита</p>
+					<p class="text"><code class="code">1 file changed</code> - изменён 1 файл</p>
+					<p class="text"><code class="code">15 insertions</code> - добавлено 15 строк</p>
+					<p class="text bullet">
+						Именно после этой записи файл отправился в git-репозиторий
+					</p>
+				</div>
+			</section>
+
+		</main>
+
+	</div>
+
+</body>
+
+</html>
