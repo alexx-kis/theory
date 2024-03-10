@@ -1,0 +1,30 @@
+.wrapper {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.home {
+  width: 100%;
+  height: 100dvh;
+  background: radial-gradient(rgb(26, 130, 159) 4%, rgb(20, 10, 107) 93%);
+}
+.home__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 100px 0;
+}
+.home__list-item {
+  padding: 20px;
+}
+.home__list-link {
+  color: #fff;
+  font-size: 50px;
+}

@@ -1,0 +1,27 @@
+.wrapper {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.home {
+	width: 100%;
+	height: 100dvh;
+	background: radial-gradient(rgb(26, 130, 159) 4%, rgb(20, 10, 107) 93%);
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		width: 100%;
+		padding: 100px 0;
+	}
+
+	&__list-item {
+		padding: 20px;
+	}
+
+	&__list-link {
+		color: #fff;
+		font-size: 50px;
+	}
+}
