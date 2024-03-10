@@ -1,41 +1,36 @@
-.wrapper {
-  padding-top: 10dvh;
+.accordion-section {
   min-height: 100dvh;
+  padding-top: 10dvh;
   background: #b67540;
 }
 
-.container {
-  max-width: 1260px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
 .label {
-  font-style: italic;
-  font-size: 12px;
   margin: 0 5px 10px 0;
   color: #383838;
+  font-size: 12px;
+  font-style: italic;
 }
 
 .acc {
-  margin-bottom: 20px;
-  border-radius: 25px;
+  max-width: 1000px;
+  margin: 0 auto 20px;
   padding: 20px;
+  border-radius: 25px;
   background: #eaa56d;
 }
 .acc__heading {
-  font-size: 30px;
   margin-bottom: 20px;
+  font-size: 30px;
   text-align: center;
 }
 .acc__inner {
-  border: 1px solid #383838;
   padding: 5px;
+  border: 1px solid #383838;
 }
 .acc__tab {
-  border: 1px solid #383838;
   margin-bottom: 20px;
   padding: 5px;
+  border: 1px solid #383838;
 }
 .acc__tab--open .acc__button-line:last-child {
   -webkit-transform: rotate(180deg);
@@ -46,33 +41,32 @@
   background: #ccc;
 }
 .acc__section {
-  border-radius: 25px;
-  padding: 10px 25px;
-  font-size: 18px;
-  font-weight: 600;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  cursor: pointer;
-  margin-bottom: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px 25px;
+  border-radius: 25px;
   background: #5f256f;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .acc__section:hover {
-  background: #a446be;
+  background: #8e2ca9;
 }
 .acc__section-text {
+  color: #fff;
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
 }
 .acc__button {
-  width: 20px;
-  height: 20px;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,13 +76,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
+  width: 20px;
+  height: 20px;
 }
 .acc__button-line {
+  position: absolute;
   width: 14px;
   height: 2px;
   background: #fff;
-  position: absolute;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -99,10 +94,10 @@
 }
 .acc__content {
   max-height: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
   overflow-x: hidden;
   border: 1px solid #383838;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .acc__text {
   padding: 10px;
