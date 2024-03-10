@@ -1,8 +1,8 @@
 /*@// @======================== GENERAL ========================@ //@*/
 /*@// @======================== GENERAL ========================@ //@*/
 
-$vp: 1440px; 
-$vph: 850px; 
+$vp: 1440px;
+$vph: 850px;
 
 html {
 	scroll-behavior: smooth;
@@ -12,7 +12,7 @@ html {
 	min-height: 100%;
 	width: 100%;
 	overflow: hidden;
-	
+
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -22,6 +22,7 @@ html {
 
 	//% для сайтов без полей по краям 
 	max-width: max(1440px, calc(1440px/$vp*100vw));
+	// width: 100%;
 	padding: 0 max(20px, calc(20px/$vp*100vw));
 
 
